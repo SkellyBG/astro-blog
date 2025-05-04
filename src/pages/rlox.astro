@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="RLox Project">
+    <div class="min-h-screen">
+        <main class="container mx-auto py-8">
+            <div class="space-y-6">
+                <h1 class="text-4xl font-bold">RLox</h1>
+                <p class="text-lg text-muted-foreground">
+                    A Rust implementation of the Lox programming language from
+                    the book "Crafting Interpreters".
+                </p>
+                <div class="prose dark:prose-invert">
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Lexical analysis</li>
+                        <li>Parsing</li>
+                        <li>Interpreter</li>
+                        <li>Error handling</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</Layout>
