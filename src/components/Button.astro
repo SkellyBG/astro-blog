@@ -1,0 +1,75 @@
+---
+interface Props {
+    href?: string;
+    variant?: 'primary' | 'secondary';
+    size?: 'small' | 'medium' | 'large';
+    class?: string;
+}
+
+const {
+    href,
+    variant = 'primary',
+    size = 'medium',
+    class: className,
+    ...rest
+} = Astro.props;
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+    href={href}
+    class:list={[
+        'button',
+        `button--${variant}`,
+        `button--${size}`,
+        className,
+    ]}
+    {...rest}
+>
+    <slot />
+</Element>
+
+<style>
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+    }
+
+    .button--primary {
+        background-color: rgb(var(--accent));
+        color: white;
+    }
+
+    .button--secondary {
+        background-color: rgb(var(--accent-light));
+        color: rgb(var(--accent-dark));
+    }
+
+    .button--small {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .button--medium {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .button--large {
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+</style> 
